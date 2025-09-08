@@ -17,3 +17,9 @@ spec:
         image: nginx:1.25
         ports:
         - containerPort: 80
+        env:
+        - name: WELCOME_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: nginx-config
+              key: welcome-message
