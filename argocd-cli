@@ -1,0 +1,51 @@
+#list of commands that i used
+
+# פורט פורוורד ל-ArgoCD UI
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+# התחברות ל-ArgoCD CLI
+argocd login localhost:8080
+
+# יצירת אפליקציה
+argocd app create simple-app `
+  --repo https://github.com/<your-username>/<repo>.git `
+  --path simple-app `
+  --dest-server https://kubernetes.default.svc `
+  --dest-namespace default
+
+# סינכרון ידני
+argocd app sync simple-app
+
+# בדיקת מידע על האפליקציה
+argocd app get simple-app
+
+# בדיקת כל האפליקציות
+argocd app list
+# הוספת Helm repository
+argocd repo add https://charts.bitnami.com/bitnami
+
+# יצירת אפליקציה Helm
+argocd app create nginx-helm `
+  --repo https://charts.bitnami.com/bitnami `
+  --helm-chart nginx `
+  --path helm-app `
+  --dest-server https://kubernetes.default.svc `
+  --dest-namespace default `
+  --values helm-app/values.yaml
+
+# סינכרון ידני
+argocd app sync nginx-helm
+
+# בדיקת סטטוס Hooks
+kubectl get jobs -n default
+kubectl logs <pre-sync-job-name> -n default
+
+# הצגת רשימת הקלאסטרים
+argocd cluster list
+
+# שינוי קונטקסט ל-cluster2
+kubectl config use-context cluster2
+
+# הוספת Cluster שני ל-ArgoCD
+argocd cluster add cluster2
+
