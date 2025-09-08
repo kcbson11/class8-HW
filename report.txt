@@ -1,0 +1,34 @@
+Summary Report – ArgoCD and GitOps
+Overview
+
+In this assignment, I installed ArgoCD on a Minikube cluster, deployed applications using Kubernetes manifests and Helm charts, and utilized Hooks and Sync Waves. I also explored multi-cluster management principles and demonstrated the Self-Heal feature.
+
+Challenges and Solutions
+
+CLI in PowerShell – special characters and parameters were not recognized.
+Solution: Used backtick (`) for line continuation.
+
+Accessing ArgoCD CLI – initial token was invalid.
+Solution: Retrieved the initial password via kubectl and logged in again.
+
+Helm Chart Deployment – release name errors.
+Solution: Used a valid release name and local values.yaml, deployed via ArgoCD UI.
+
+Multi-Cluster Management in Minikube – ArgoCD could not reach cluster2.
+Solution: Demonstrated multi-application deployment on cluster1 and verified cluster2 existence using minikube status.
+
+Key Learnings
+
+Using ArgoCD for GitOps-based application management: synchronization, drift detection, and automatic correction.
+
+Proper deployment order using Sync Waves and Hooks.
+
+Managing resources: Deployments, Services, ConfigMaps, ReplicaSets, and Jobs.
+
+Understanding multi-cluster concepts and testing in a local environment.
+
+Strengthening problem-solving skills in CLI and UI.
+
+Conclusion
+
+This assignment provided hands-on experience in deploying and managing applications with ArgoCD and GitOps, including change tracking, automatic synchronization, and demonstrating advanced Kubernetes management principles.
